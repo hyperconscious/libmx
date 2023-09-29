@@ -5,7 +5,8 @@ char *mx_strndup(const char *s1, size_t n){
     if(n < size) size = n;
 
     char *result  = mx_strnew(size);
-    mx_strncpy(result, s1, size);
+    if(result)
+        mx_strncpy(result, s1, size);
     return result;
 }
 

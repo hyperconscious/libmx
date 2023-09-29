@@ -14,11 +14,12 @@ char *mx_strstr(const char *haystack, const char *needle){
                 break;
         }
         if (j == needle_len) {
-            char *result = mx_strnew(haystack_len - needle_len);
+            return (char *)(haystack + i);
+   /*         char *result = mx_strnew(haystack_len - needle_len);
             if (!result)
                 return NULL;
             mx_strncpy(result, haystack + i, haystack_len - needle_len);
-            return result;
+            return result;*/
         }
     }
 

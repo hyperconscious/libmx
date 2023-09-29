@@ -2,6 +2,13 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <stdbool.h>
+
+typedef struct s_list{
+    void *data;
+    struct s_list *next;
+}              t_list;
 
 void mx_printchar(char c);
 void mx_print_unicode(wchar_t c);
@@ -40,4 +47,26 @@ char *mx_file_to_str(const char *file);
 char *mx_replace_substr(const char *str, const char *sub, const char *replace);
 int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd);
 
+void *mx_memset(void *b, int c, size_t len);
+void *mx_memcpy(void *restrict dst, const void *restrict src, size_t n);
+void *mx_memccpy(void *restrict dst, const void *restrict src, int c, size_t n);
+int mx_memcmp(const void *s1, const void *s2, size_t n);
+void *mx_memchr(const void *s, int c, size_t n);
+void *mx_memrchr(const void *s, int c, size_t n);
+void *mx_memmem(const void *big, size_t big_len, const void *little, size_t little_len);
+void *mx_memmove(void *dst, const void *src, size_t len);
+char *mx_realloc(char *ptr, size_t size);
 
+t_list *mx_create_node(void *data);
+void mx_push_front(t_list **list, void *data);
+void mx_push_back(t_list **list, void *data);
+void mx_pop_front(t_list **head);
+void mx_pop_back(t_list **head);
+int mx_list_size(t_list *list);
+t_list *mx_sort_list(t_list *lst, bool (*cmp)(void *, void*));
+
+int mx_strncmp(const char *s1, const char *s2, size_t n);
+void mx_strswap(char **s1, char **s2);
+char *mx_upstr(const char *str);
+char *mx_lowstr(const char *str);
+bool mx_isPrime(const int num);

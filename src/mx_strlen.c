@@ -1,10 +1,14 @@
+#include "../inc/libmx.h"
+
 int mx_strlen(const char* s){
     int count = 0;
-    char at = s[0];
+    const char *at = s;
 
-    while(at != '\0'){
-        at = s[++count];
+    while(*at != '\0'){
+        at++;
+        count++;
     }
 
     return count;
 }
+

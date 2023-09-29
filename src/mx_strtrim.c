@@ -5,8 +5,8 @@ char *mx_strtrim(const char *str){
     int str_end = mx_strlen(str);
     int str_start = 0;
 
-    while(str[str_end] < 33) str_end--;
-    while(str[str_start] < 33) str_start++;
+    while(str_end >= 0 && str[str_end] < 33) str_end--;
+    while(str_start <= str_end && str[str_start] < 33) str_start++;
 
     return mx_strndup(str + str_start, str_end - str_start + 1);
 }

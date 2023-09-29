@@ -1,6 +1,6 @@
 CC = clang
 CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
-TARGET = exec
+NAME = libmx.a
 
 OBJ_FOLDER = obj
 INC_FOLDER = inc
@@ -14,10 +14,10 @@ RM = rm -rf
 AR = ar rcs
 MKDIR = mkdir -p
 
-all: $(TARGET)
+all: $(NAME) clean
 
-$(TARGET): $(OBJ_FILES)
-	@$(CC) $(CFLAGS) $^ -o $@ -I $(INC_FOLDER)
+$(NAME): $(OBJ_FILES)
+	@$(AR) $@ $^
 
 $(OBJ_FILES): | $(OBJ_FOLDER)
 
@@ -27,10 +27,12 @@ $(OBJ_FOLDER)/%.o: $(SRC_FOLDER)/%.c $(INC_FILES)
 $(OBJ_FOLDER):
 	@$(MKDIR) $@
 
+
 clean:
 	@$(RM) $(OBJ_FOLDER)
 
 uninstall: clean
-	@$(RM) $(TARGET)
+	@$(RM) $(NAME)
 
 reinstall: uninstall all
+

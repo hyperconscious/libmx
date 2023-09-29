@@ -3,10 +3,14 @@
 char *mx_itoa(int number){
     if(number == -2147483648){
         char *resultString = mx_strnew(11);
+        if(!resultString)
+            return NULL;
         return mx_strcpy(resultString, "-2147483648");
     }
     if(number == 0){
         char *resultString = mx_strnew(1);
+        if(!resultString)
+            return NULL;
         *resultString = '0';
         return resultString; 
     }
