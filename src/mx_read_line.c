@@ -13,6 +13,7 @@ int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd){
     while (1) {
         if (read(fd, &c, 1) != 1) {
             if (read_bytes == 0) {
+                *lineptr = line;
                 return -1; 
             }
             break;
@@ -27,6 +28,7 @@ int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd){
             char *temp = mx_realloc(line, buf_size);
             if (!temp) {
                 free(line);
+                line = NULL;
                 return -2; 
             }
             line = temp;
@@ -48,7 +50,8 @@ int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd){
         line[line_len] = '\0';
     }
 
-    *lineptr = line;
+    mx_strncpy(*lineptr, line, line_len );
+    free(line);
     return read_bytes;
 }
 
