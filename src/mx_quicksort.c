@@ -20,6 +20,7 @@ int mx_partition(char **arr, int left, int right, int *count){
 }
 
 int mx_quicksort(char **arr, int left, int right){
+    if(arr == NULL) return -1;
     if(left >= right) return 0;
     int count = 0;
     int border = mx_partition(arr, left, right, &count);

@@ -12,7 +12,10 @@ char *mx_del_extra_spaces(const char *str){
     int j = 0;
     for(int i = str_start; i <= str_end; i++){
         if(str[i] <= 32){
-            if(flag == 0){
+            if(str[i] == 10){
+                result_str[j++] = 10;
+                continue;
+            } else if(flag == 0){
                 result_str[j++] = ' ';
                 flag = 1;
             }

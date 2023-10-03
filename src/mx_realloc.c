@@ -14,9 +14,7 @@ char *mx_realloc(char *ptr, size_t size){
     }
 
     if(ptr){
-        size_t old_size = mx_strlen(ptr);
-        size_t copy_size = old_size < size ? old_size : size;
-        mx_memcpy(new_ptr, ptr, copy_size);
+        mx_memcpy(new_ptr, ptr, size);
         free(ptr);
     }
     return new_ptr;
